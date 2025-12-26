@@ -21,7 +21,8 @@ jobs:
           python-version: '3.9'
           
       - name: Install Libraries
-        run: pip install requests
+        run: |
+          pip install requests beautifulsoup4
           
       - name: Run The Bot
         run: python scraper.py
