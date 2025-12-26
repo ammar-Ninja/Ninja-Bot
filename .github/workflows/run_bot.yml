@@ -1,0 +1,27 @@
+name: Ninja Auto Bot
+
+on:
+  # يشتغل كل 6 ساعات لوحده
+  schedule:
+    - cron: '0 */6 * * *'
+  # زرار عشان نشغله بإيدنا دلوقتي
+  workflow_dispatch:
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          
+      - name: Install Libraries
+        run: pip install requests
+          
+      - name: Run The Bot
+        run: python scraper.py
